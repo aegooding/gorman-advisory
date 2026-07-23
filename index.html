@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Gorman Advisory — Supply Chain Advisory and Business Growth consulting. We help organisations reduce costs, strengthen supplier relationships, and drive sustainable revenue growth.">
+<meta property="og:title" content="Gorman Advisory">
+<meta property="og:description" content="Independent supply chain and commercial advisory. Practical outcomes for leadership teams.">
+<title>Gorman Advisory — Supply Chain & Business Growth Advisory</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&family=Public+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --midnight:  #0A1E3C;
+    --lime:      #C6F135;
+    --coolgrey:  #E8EBEF;
+    --steel:     #3D6B9E;
+    --ink:       #1E3050;
+    --card:      #F4F6F9;
+    --dark-card: #1A3560;
+    --line:      #D0D8E4;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Public Sans', sans-serif;
+    color: var(--ink);
+    background: var(--coolgrey);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  img { max-width: 100%; display: block; }
+
+  a { color: inherit; text-decoration: none; }
+
+  .container {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #0A1E3C;
+    display: block;
+    margin-bottom: 16px;
+  }
+  .hero .eyebrow,
+  .section-midnight .eyebrow {
+    color: #c6f135;
+  }
+
+  h1, h2, h3 { font-family: 'Source Serif 4', serif; }
+
+  h1 {
+    font-weight: 700;
+    font-size: clamp(36px, 5vw, 56px);
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+  }
+
+  h2 {
+    font-weight: 600;
+    font-size: clamp(26px, 3.5vw, 36px);
+    line-height: 1.15;
+  }
+
+  h3 {
+    font-family: 'Public Sans', sans-serif;
+    font-weight: 700;
+    font-size: 19px;
+  }
+
+  p { line-height: 1.65; font-size: 16px; }
+
+  .btn {
+    display: inline-block;
+    font-family: 'Public Sans', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    cursor: pointer;
+    border: none;
+  }
+
+  .btn-lime {
+    background: var(--lime);
+    color: var(--midnight);
+    border-radius: 99px;
+    padding: 8px 18px;
+    transition: transform 0.2s ease;
+  }
+
+  .btn-lime:hover { transform: scale(1.02); }
+
+  /* Scroll reveal */
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ===== NAV ===== */
+  header.nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: transparent;
+    transition: background 0.3s ease, backdrop-filter 0.3s ease;
+  }
+  header.nav.scrolled {
+    background: rgba(10,30,60,0.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+  }
+  .nav-logo img { height: 72px; opacity: 0.85; }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+  .nav-links a:not(.btn) {
+    font-weight: 600;
+    font-size: 14px;
+    color: rgba(255,255,255,0.85);
+    transition: color 0.2s;
+  }
+  .nav-links a:not(.btn):hover { color: #fff; }
+
+  .nav-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+  }
+  .nav-toggle span {
+    width: 24px;
+    height: 2px;
+    background: #fff;
+    display: block;
+  }
+
+  .nav-dropdown {
+    display: none;
+    flex-direction: column;
+    gap: 0;
+    background: rgba(10,30,60,0.97);
+    backdrop-filter: blur(12px);
+    padding: 8px 24px 20px;
+  }
+  .nav-dropdown a:not(.btn) {
+    padding: 12px 0;
+    font-weight: 600;
+    font-size: 15px;
+    color: rgba(255,255,255,0.85);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .nav-dropdown .btn { margin-top: 16px; text-align: center; }
+  .nav-dropdown.open { display: flex; }
+
+  /* ===== HERO ===== */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+  }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background-image: url('assets/images/AdobeStock_1902617246.jpeg');
+    background-size: cover;
+    background-position: center;
+    filter: saturate(0.75);
+  }
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(10,30,60,0.72);
+  }
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    padding: 140px 24px 80px;
+    max-width: 1180px;
+    margin: 0 auto;
+  }
+  .hero h1 { color: #fff; margin-bottom: 24px; max-width: 20ch; }
+  .hero p {
+    color: rgba(255,255,255,0.80);
+    max-width: 58ch;
+    font-size: 17px;
+    margin-bottom: 36px;
+  }
+  .hero-ctas {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    flex-wrap: wrap;
+  }
+  .hero-ctas .btn-lime { padding: 14px 28px; font-size: 15px; }
+  .link-secondary {
+    color: #fff;
+    font-weight: 600;
+    font-size: 14px;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s;
+  }
+  .link-secondary:hover { border-color: #fff; }
+
+  /* ===== SECTION SPACING ===== */
+  section { padding: 100px 0; }
+  .section-midnight { background: var(--midnight); }
+  .section-coolgrey { background: var(--coolgrey); }
+
+  #services {
+    position: relative;
+    background-color: var(--midnight);
+  }
+  #services::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('assets/images/AdobeStock_1611423496.jpeg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    opacity: 0.20;
+    mix-blend-mode: luminosity;
+    pointer-events: none;
+    z-index: 0;
+  }
+  #services > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ===== WHAT WE DO ===== */
+  .split {
+    display: flex;
+    gap: 64px;
+    align-items: center;
+  }
+  .split-text { flex: 0 0 55%; max-width: 55%; }
+  .split-image { flex: 0 0 45%; max-width: 45%; }
+  .split-image img {
+    border-radius: 10px;
+    object-fit: cover;
+    width: 100%;
+    height: 420px;
+    filter: saturate(0.80);
+  }
+  .split h2 { color: var(--midnight); margin-bottom: 20px; }
+  .split p { color: var(--ink); }
+
+  /* ===== SERVICES ===== */
+  .services-head { max-width: 640px; margin-bottom: 56px; }
+  .services-head h2 { color: #fff; }
+  .services-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .service-card {
+    background: var(--dark-card);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-left: 3px solid transparent;
+    border-radius: 14px;
+    padding: 32px;
+    transition: transform 0.2s ease, border-left-color 0.2s ease;
+  }
+  .service-card:hover {
+    transform: translateY(-4px);
+    border-left-color: var(--lime);
+  }
+  .service-card h3 { color: var(--lime); margin-bottom: 12px; }
+  .service-card > p { color: rgba(255,255,255,0.75); margin-bottom: 20px; }
+  .service-card ul { list-style: none; }
+  .service-card li {
+    position: relative;
+    padding-left: 18px;
+    color: rgba(255,255,255,0.75);
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 8px;
+  }
+  .service-card li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--steel);
+  }
+
+  /* ===== RESULTS ===== */
+  #results {
+    background: var(--coolgrey);
+  }
+  .results-grid {
+    display: flex;
+    gap: 64px;
+    align-items: flex-start;
+  }
+  .results-text { flex: 0 0 45%; max-width: 45%; }
+  .results-text h2 { color: var(--midnight); margin-bottom: 20px; }
+  .results-text p { color: var(--ink); }
+  .results-list { flex: 1; list-style: none; }
+  .results-list li {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--line);
+    font-weight: 500;
+    font-size: 16px;
+    color: var(--ink);
+  }
+  .tick {
+    flex-shrink: 0;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--lime);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* ===== WHY US ===== */
+  .why-section {
+    overflow: hidden;
+  }
+  #why-us {
+    position: relative;
+    background-color: var(--midnight);
+    background-image: url('assets/images/AdobeStock_295572929.jpeg');
+    background-size: cover;
+    background-position: center 30%;
+    background-repeat: no-repeat;
+    padding-top: 140px;
+    padding-bottom: 140px;
+  }
+  #why-us::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(10, 30, 60, 0.85);
+    pointer-events: none;
+    z-index: 0;
+  }
+  #why-us > * {
+    position: relative;
+    z-index: 1;
+  }
+  .why-content {
+    position: relative;
+    z-index: 1;
+    max-width: 640px;
+  }
+  .why-content h2 { color: #fff; margin-bottom: 24px; }
+  .why-content p {
+    color: rgba(255,255,255,0.78);
+    max-width: 62ch;
+    margin-bottom: 20px;
+  }
+
+  /* ===== CONTACT ===== */
+  .contact-wrap {
+    display: flex;
+    gap: 56px;
+    align-items: flex-start;
+  }
+  .contact-info { flex: 0 0 42%; max-width: 42%; }
+  .contact-info h2 { color: var(--midnight); margin-bottom: 20px; }
+  .contact-info > p { color: var(--ink); margin-bottom: 32px; }
+  .contact-below {
+    margin-top: 28px;
+    color: var(--ink);
+    font-size: 15px;
+  }
+  .contact-below a {
+    color: #0A1E3C;
+    text-decoration: underline;
+    font-weight: 600;
+  }
+
+  .contact-form-card {
+    flex: 1;
+    background: #fff;
+    border-radius: 14px;
+    padding: 40px;
+    box-shadow: 0 4px 32px rgba(10,30,60,0.08);
+  }
+  .form-group { margin-bottom: 20px; }
+  label {
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 500;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--steel);
+    margin-bottom: 8px;
+  }
+  input, textarea {
+    width: 100%;
+    background: #fff;
+    border: 1.5px solid var(--line);
+    border-radius: 8px;
+    padding: 12px 14px;
+    font-family: 'Public Sans', sans-serif;
+    font-size: 15px;
+    color: var(--ink);
+    transition: border-color 0.2s;
+  }
+  input:focus, textarea:focus { border-color: var(--steel); outline: none; }
+  input:valid, textarea:valid { border-color: var(--lime); }
+  textarea { resize: vertical; }
+
+  .submit-btn {
+    width: 100%;
+    background: var(--lime);
+    color: var(--midnight);
+    font-weight: 700;
+    font-size: 15px;
+    border-radius: 14px;
+    padding: 16px 0;
+    margin-top: 8px;
+    transition: transform 0.2s ease;
+  }
+  .submit-btn:hover { transform: scale(1.02); }
+
+  .success-message {
+    text-align: center;
+    color: var(--midnight);
+    font-size: 17px;
+    padding: 40px 0;
+  }
+  .error-message {
+    color: #B3261E;
+    font-size: 14px;
+    margin-top: 12px;
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: var(--midnight);
+    padding: 64px 0 0;
+  }
+  .footer-inner {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    padding-bottom: 48px;
+    flex-wrap: wrap;
+  }
+  .footer-left img { height: 32px; opacity: 0.85; margin-bottom: 12px; }
+  .footer-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 400;
+    font-size: 12px;
+    color: var(--steel);
+  }
+  .footer-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 16px;
+  }
+  .footer-nav {
+    display: flex;
+    gap: 24px;
+  }
+  .footer-nav a {
+    font-weight: 500;
+    font-size: 14px;
+    color: rgba(255,255,255,0.65);
+    transition: color 0.2s;
+  }
+  .footer-nav a:hover { color: #fff; }
+  .footer-email {
+    color: var(--lime);
+    text-decoration: underline;
+    font-size: 14px;
+  }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.10);
+    padding: 20px 0;
+    text-align: center;
+    font-size: 13px;
+    color: rgba(255,255,255,0.40);
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 1024px) {
+    .services-grid { grid-template-columns: 1fr; }
+    .split { flex-direction: column; align-items: flex-start; }
+    .split-text, .split-image { max-width: 100%; flex-basis: auto; width: 100%; }
+    .split-image img { height: 320px; }
+    .results-grid { flex-direction: column; }
+    .results-text, .results-list { max-width: 100%; flex-basis: auto; width: 100%; }
+    .contact-wrap { flex-direction: column; }
+    .contact-info, .contact-form-card { max-width: 100%; flex-basis: auto; width: 100%; }
+  }
+
+  @media (max-width: 640px) {
+    section { padding: 64px 0; }
+    .nav-links { display: none; }
+    .nav-toggle { display: flex; }
+    .hero-content { padding-top: 120px; }
+    .service-card { padding: 24px; }
+    .contact-form-card { padding: 28px; }
+    .footer-inner { flex-direction: column; }
+    .footer-right { align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<header class="nav" id="siteNav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <img src="assets/logos/Logo Aqua.svg" alt="Gorman Advisory" loading="lazy">
+    </a>
+    <nav class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#why-us">Why Us</a>
+      <a href="#contact" class="btn btn-lime">Contact Us</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <nav class="nav-dropdown" id="navDropdown">
+    <a href="#services">Services</a>
+    <a href="#why-us">Why Us</a>
+    <a href="#contact" class="btn btn-lime">Contact Us</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="eyebrow">Business Growth & Supply Chain Advisory</span>
+    <h1>Supply chain and commercial advisory for businesses moving goods
+internationally and throughout Australia.</h1>
+    <p>Gorman Advisory works alongside leadership teams to improve commercial
+performance, reduce costs, strengthen supplier relationships, and drive
+sustainable revenue growth — with practical industry experience and a
+commercial mindset that gets things done.</p>
+    <div class="hero-ctas">
+      <a href="#contact" class="btn btn-lime">Talk to us</a>
+      <a href="#services" class="link-secondary">See how we work →</a>
+    </div>
+  </div>
+</section>
+
+<section class="section-coolgrey">
+  <div class="container split reveal">
+    <div class="split-text">
+      <span class="eyebrow">What we do</span>
+      <h2>Independent advice. Measurable outcomes.</h2>
+      <p>We partner with businesses to identify opportunities across their supply
+chain and commercial operations — ones that are often hiding in plain sight.
+Whether you need to cut freight costs, win more revenue, tighten procurement,
+or rethink your strategy, we deliver solutions that create real business results.</p>
+    </div>
+    <div class="split-image">
+      <img src="assets/images/AdobeStock_629236232.jpeg" alt="Supply chain and logistics operations" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<section class="section-midnight" id="services">
+  <div class="container">
+    <div class="services-head reveal">
+      <span class="eyebrow">Our services</span>
+      <h2>Four ways we create value</h2>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <h3>Supply Chain & Logistics</h3>
+        <p>We review, optimise, and restructure how your goods move —
+domestically and internationally.</p>
+        <ul>
+          <li>International freight management (air, sea and customs)</li>
+          <li>Domestic freight optimisation (road, rail and coastal shipping)</li>
+          <li>Warehousing and distribution reviews</li>
+          <li>Supplier sourcing, procurement and contract negotiations</li>
+        </ul>
+      </div>
+      <div class="service-card reveal">
+        <h3>Commercial Growth</h3>
+        <p>We help you find new revenue and extract more value from what you already have.</p>
+        <ul>
+          <li>Sales and commercial team reviews</li>
+          <li>New product and revenue stream development</li>
+          <li>Go-to-market planning and growth strategies</li>
+          <li>Margin improvement and profitability programs</li>
+        </ul>
+      </div>
+      <div class="service-card reveal">
+        <h3>Procurement & Compliance</h3>
+        <p>We bring rigour and discipline to how you buy — and make sure you're protected.</p>
+        <ul>
+          <li>Freight tenders and RFQ management</li>
+          <li>Customs and compliance reviews</li>
+          <li>Supplier and packaging audits</li>
+          <li>Strategic procurement and cost-reduction initiatives</li>
+        </ul>
+      </div>
+      <div class="service-card reveal">
+        <h3>Finance & Strategy</h3>
+        <p>We help leadership teams see the bigger picture — and act on it.</p>
+        <ul>
+          <li>Foreign exchange and trade finance solutions</li>
+          <li>Supply chain network reviews and optimisation</li>
+          <li>Business transformation and operational improvement programs</li>
+          <li>Executive leadership and board-level advisory</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-coolgrey" id="results">
+  <div class="container results-grid reveal">
+    <div class="results-text">
+      <span class="eyebrow">What we deliver</span>
+      <h2>Practical outcomes that strengthen your business.</h2>
+      <p>Our focus is on tangible improvements across your operations —
+not reports that sit on a shelf.</p>
+    </div>
+    <ul class="results-list">
+      <li><span class="tick"><svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5L4.5 8.5L11 1.5" stroke="#0A1E3C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Lower operating and supply chain costs</li>
+      <li><span class="tick"><svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5L4.5 8.5L11 1.5" stroke="#0A1E3C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Improved revenue and profit margins</li>
+      <li><span class="tick"><svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5L4.5 8.5L11 1.5" stroke="#0A1E3C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Greater operational efficiency</li>
+      <li><span class="tick"><svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5L4.5 8.5L11 1.5" stroke="#0A1E3C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Enhanced compliance and risk management</li>
+      <li><span class="tick"><svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5L4.5 8.5L11 1.5" stroke="#0A1E3C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Stronger supplier and customer relationships</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section-midnight why-section" id="why-us">
+  <div class="container">
+    <div class="why-content reveal">
+      <span class="eyebrow">Why Gorman Advisory</span>
+      <h2>Independent. Commercial. Results Focused.</h2>
+      <p>We provide objective advice backed by real-world commercial and supply chain
+experience. Unlike large consulting firms, we don't bring a methodology —
+we bring judgment. We work closely with business owners, executives and
+leadership teams to uncover opportunities, challenge existing thinking, and
+implement strategies that actually deliver.</p>
+      <p>Our approach is straightforward: identify the opportunities, solve the complex
+challenges, and create lasting value for our clients. No jargon. No unnecessary
+complexity. Just clear thinking and practical action.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section-coolgrey" id="contact">
+  <div class="container">
+    <div class="contact-wrap reveal">
+      <div class="contact-info">
+        <span class="eyebrow">Get in touch</span>
+        <h2>Ready to unlock value across your supply chain and commercial operations?</h2>
+        <p>Tell us about your business and what you're trying to achieve.
+We'll respond within one business day.</p>
+        <div class="contact-below">
+          <p>Or email us directly:</p>
+          <a href="mailto:pg@gormanadvisory.com">pg@gormanadvisory.com</a>
+        </div>
+      </div>
+      <div class="contact-form-card">
+        <form id="contactForm">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          <div class="form-group">
+            <label for="company">Company</label>
+            <input type="text" id="company" name="company" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone (optional)</label>
+            <input type="tel" id="phone" name="phone">
+          </div>
+          <div class="form-group">
+            <label for="message">How can we help?</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+          </div>
+          <button type="submit" class="btn submit-btn">Send message</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container footer-inner">
+    <div class="footer-left">
+      <img src="assets/logos/Logo Aqua.svg" alt="Gorman Advisory" loading="lazy">
+      <div class="footer-tag">Supply Chain Advisory | Logistics Solutions</div>
+    </div>
+    <div class="footer-right">
+      <nav class="footer-nav">
+        <a href="#services">Services</a>
+        <a href="#why-us">Why Us</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a href="mailto:pg@gormanadvisory.com" class="footer-email">pg@gormanadvisory.com</a>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2026 Gorman Advisory. All rights reserved.</div>
+</footer>
+
+<script>
+  // Nav scroll state
+  const nav = document.getElementById('siteNav');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 60) {
+      nav.classList.add('scrolled');
+    } else {
+      nav.classList.remove('scrolled');
+    }
+  });
+
+  // Mobile nav toggle
+  const navToggle = document.getElementById('navToggle');
+  const navDropdown = document.getElementById('navDropdown');
+  navToggle.addEventListener('click', () => {
+    const isOpen = navDropdown.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', isOpen);
+  });
+  navDropdown.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navDropdown.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => observer.observe(el));
+
+  // Contact form submit
+  const contactForm = document.getElementById('contactForm');
+  contactForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = contactForm.querySelector('button[type="submit"]');
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: contactForm.name.value,
+          company: contactForm.company.value,
+          email: contactForm.email.value,
+          phone: contactForm.phone.value,
+          message: contactForm.message.value
+        })
+      });
+
+      if (res.ok) {
+        contactForm.innerHTML = '<p class="success-message">Thanks — we\'ll be in touch within one business day.</p>';
+      } else {
+        throw new Error('Send failed');
+      }
+    } catch {
+      btn.textContent = 'Send message';
+      btn.disabled = false;
+      btn.insertAdjacentHTML('afterend',
+        '<p class="error-message">Something went wrong — please email us directly at pg@gormanadvisory.com</p>'
+      );
+    }
+  });
+</script>
+
+</body>
+</html>

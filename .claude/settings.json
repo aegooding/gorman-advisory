@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir -p assets/logos assets/images)",
+      "Bash(mv \"Logo.png\" \"Logo Blue.svg\" \"Logo Soft Blue.svg\" \"Logo Steel Blue.svg\" assets/logos/)",
+      "Bash(mv AdobeStock_*.jpeg assets/images/)",
+      "Bash(open \"/Users/andrewgooding/Dropbox/Gorman Advisory/Website/index.html\")",
+      "Bash(git init *)",
+      "Bash(git add *)"
+    ]
+  }
+}

@@ -399,13 +399,25 @@
     margin: 0 auto;
     display: grid;
     grid-template-columns: 380px 1fr;
-    gap: 64px;
+    grid-template-areas:
+      "image header"
+      "image text";
+    column-gap: 64px;
     align-items: start;
   }
 
+  .about-header {
+    grid-area: header;
+  }
+
   .about-image {
+    grid-area: image;
     position: sticky;
     top: 100px;
+  }
+
+  .about-text {
+    grid-area: text;
   }
 
   .photo-placeholder {
@@ -437,7 +449,7 @@
   }
   */
 
-  .about-text h2 {
+  .about-header h2 {
     font-family: 'Source Serif 4', serif;
     font-weight: 600;
     font-size: clamp(26px, 3.5vw, 36px);
@@ -489,6 +501,10 @@
   @media (max-width: 1024px) {
     .about-inner {
       grid-template-columns: 1fr;
+      grid-template-areas:
+        "header"
+        "image"
+        "text";
       gap: 40px;
     }
     .about-image {
@@ -502,7 +518,9 @@
 
   @media (max-width: 640px) {
     .about-credentials {
-      gap: 24px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
     }
     .credential-figure {
       font-size: 26px;
@@ -808,14 +826,16 @@ complexity. Just clear thinking and practical action.</p>
 
 <section id="about">
   <div class="about-inner">
+    <div class="about-header">
+      <span class="eyebrow">About Patrick Gorman</span>
+      <h2>20 years of getting supply chains to perform.</h2>
+    </div>
     <div class="about-image">
       <div class="photo-placeholder">
         <span>Photo<br>coming<br>soon</span>
       </div>
     </div>
     <div class="about-text">
-      <span class="eyebrow">About Patrick Gorman</span>
-      <h2>20 years of getting supply chains to perform.</h2>
       <p>Patrick Gorman has spent more than two decades at the sharp end of global logistics — not in consulting, but running sales, building teams, and delivering commercial outcomes for some of the world's leading freight and supply chain businesses.</p>
       <p>His career spans international freight forwarding with Röhlig Logistics across Australia and the United States, national sales leadership at Visy Logistics where he managed a $350M supply chain operation, nearly a decade as National Product Manager at C.H. Robinson — one of the world's largest third-party logistics providers — and most recently as Director of Strategic Sales at Scan Global Logistics Australia.</p>
       <p>Across those roles, Patrick has worked across road, rail, air, sea and coastal shipping; built and led national sales teams; developed coastal shipping divisions and warehouse networks; and driven commercial strategy across FMCG, retail and manufacturing sectors in Australia, Asia, Europe and the US.</p>

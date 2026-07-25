@@ -505,11 +505,15 @@
         "header"
         "image"
         "text";
-      gap: 40px;
+      row-gap: 0;
+    }
+    .about-header {
+      margin-bottom: 20px;
     }
     .about-image {
       position: static;
       max-width: 320px;
+      margin-bottom: 40px;
     }
     #about {
       padding: 72px 24px;
@@ -517,10 +521,14 @@
   }
 
   @media (max-width: 640px) {
+    #about {
+      padding-bottom: 48px;
+    }
     .about-credentials {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 16px;
+      margin-bottom: 0;
     }
     .credential-figure {
       font-size: 26px;

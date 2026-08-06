@@ -420,25 +420,6 @@
     grid-area: text;
   }
 
-  .photo-placeholder {
-    width: 100%;
-    aspect-ratio: 4/5;
-    background: var(--dark-card);
-    border-radius: 16px;
-    box-shadow: -5px 0 0 var(--lime);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: rgba(255,255,255,0.3);
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 13px;
-    text-align: center;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-  }
-
-  /* When photo is ready, replace .photo-placeholder with: */
-  /*
   .about-photo {
     width: 100%;
     aspect-ratio: 4/5;
@@ -447,7 +428,6 @@
     border-radius: 16px;
     box-shadow: -5px 0 0 var(--lime);
   }
-  */
 
   .about-header h2 {
     font-family: 'Source Serif 4', serif;
@@ -839,9 +819,7 @@ complexity. Just clear thinking and practical action.</p>
       <h2>20 years of getting supply chains to perform.</h2>
     </div>
     <div class="about-image">
-      <div class="photo-placeholder">
-        <span>Photo<br>coming<br>soon</span>
-      </div>
+      <img class="about-photo" src="assets/images/patrick-gorman.jpg" alt="Patrick Gorman" loading="lazy">
     </div>
     <div class="about-text">
       <p>Patrick Gorman has spent more than two decades at the sharp end of global logistics — not in consulting, but running sales, building teams, and delivering commercial outcomes for some of the world's leading freight and supply chain businesses.</p>
